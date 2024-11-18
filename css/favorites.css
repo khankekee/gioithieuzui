@@ -1,7 +1,12 @@
-/* Cài đặt cho trang sở thích */
-body {
+/* Cài đặt mặc định cho tất cả phần tử */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Đặt font mặc định và màu nền cho toàn bộ trang */
+body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(45deg, #ff6f61, #f6a8b3, #ffe0d7);
     background-size: 300% 300%;
@@ -13,18 +18,19 @@ body {
     color: white;
 }
 
-
+/* Phần khung chứa chính của trang */
 .main-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
     width: 100%;
     max-width: 1200px;
-    gap: 30px;
 }
 
-
-.favorites-container {
+/* Khung sở thích */
+.favorites-container, .questions-container {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     width: 48%;
@@ -32,22 +38,12 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-
-.questions-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}
-
-
-.favorites-note {
+/* Khung note của sở thích */
+.favorites-note, .questions-note {
     background-color: #fff;
     border-radius: 20px;
     padding: 30px;
@@ -57,27 +53,15 @@ body {
     text-align: center;
 }
 
-
-.questions-note {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 30px;
-    width: 100%;
-    color: #333;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-
-.favorites-note p,
-.questions-note p {
-    font-size: 22px;
+/* Phần văn bản trong các note */
+.favorites-note p, .questions-note p {
+    font-size: 20px;
     margin-bottom: 10px;
     color: #333;
     line-height: 1.5;
 }
 
-
+/* Các câu hỏi dạng radio */
 .options {
     display: flex;
     justify-content: center;
@@ -85,7 +69,7 @@ body {
     margin-top: 10px;
 }
 
-
+/* Câu hỏi dạng radio */
 .option {
     display: flex;
     align-items: center;
@@ -93,11 +77,10 @@ body {
     font-size: 18px;
 }
 
-
+/* Các checkbox và radio */
 .question-radio {
     display: none;
 }
-
 
 .checkmark {
     width: 20px;
@@ -108,7 +91,6 @@ body {
     position: relative;
     transition: all 0.2s ease;
 }
-
 
 .question-radio:checked + .checkmark {
     background-color: #4caf50;
@@ -124,7 +106,6 @@ body {
     color: white;
 }
 
-
 .question-radio:not(:checked) + .checkmark::after {
     content: "✘";
     position: absolute;
@@ -134,7 +115,7 @@ body {
     color: #f44336;
 }
 
-
+/* Các textarea cho câu trả lời */
 textarea {
     width: 80%;
     padding: 10px;
@@ -145,7 +126,7 @@ textarea {
     resize: vertical;
 }
 
-
+/* Nút gửi */
 .custom-button {
     background-color: #FF9398;
     color: #fff;
@@ -162,7 +143,7 @@ textarea {
     background-color: #e88388;
 }
 
-
+/* Thông báo phản hồi */
 .response-message {
     font-size: 20px;
     margin-top: 15px;
@@ -176,6 +157,7 @@ textarea {
     margin-top: 20px;
 }
 
+/* Nút quay lại trang đầu */
 .custom-button {
     background-color: #ECD06F; 
     color: #fff;
@@ -198,4 +180,39 @@ textarea {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* Media query cho điện thoại */
+@media (max-width: 768px) {
+    /* Thay đổi bố cục khi trên điện thoại */
+    .main-container {
+        flex-direction: column; /* Đặt các phần tử theo chiều dọc */
+        align-items: center; /* Căn giữa các phần tử */
+    }
+
+    /* Giảm chiều rộng của các khung khi trên điện thoại */
+    .favorites-container, .questions-container {
+        width: 90%; /* Chiếm 90% chiều rộng màn hình */
+        margin-top: 20px;
+    }
+
+    /* Đảm bảo các khung note có padding hợp lý */
+    .favorites-note, .questions-note {
+        padding: 20px;
+    }
+
+    /* Giảm kích thước font trong các note */
+    .favorites-note p, .questions-note p {
+        font-size: 18px;
+    }
+
+    /* Thu nhỏ textarea */
+    textarea {
+        width: 100%;
+    }
+
+    /* Thu nhỏ nút gửi */
+    .custom-button {
+        padding: 10px 15px;
+    }
 }
